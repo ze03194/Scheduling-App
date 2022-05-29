@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<AnchorPane prefHeight="688.0" prefWidth="1055.0" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.schedulingapp.controllers.CustomerController">
+    <children>
+        <Pane layoutX="60.0" layoutY="110.0" prefHeight="455.0" prefWidth="936.0"
+              style="-fx-border-color: black; -fx-border-radius: 8;">
+            <children>
+                <ButtonBar fx:id="buttonBar" layoutX="56.0" layoutY="14.0" nodeOrientation="RIGHT_TO_LEFT"
+                           prefHeight="40.0" prefWidth="824.0"
+                           style="-fx-background-color: lightgray; -fx-border-color: black; -fx-border-radius: 6;">
+                    <buttons>
+                        <Button mnemonicParsing="false" onAction="#reportsBtnSubmit"
+                                style="-fx-border-color: black; -fx-border-radius: 3;" text="Reports"/>
+                        <Button fx:id="firstLevelBtn" mnemonicParsing="false" onAction="#firstLevelBtnSubmit"
+                                prefHeight="27.0" prefWidth="150.0"
+                                style="-fx-border-color: black; -fx-border-radius: 3;" text="First Level Divisions"/>
+                        <Button fx:id="countriesBtn" mnemonicParsing="false" onAction="#countriesBtnSubmit"
+                                style="-fx-border-color: black; -fx-border-radius: 3;" text="Countries"/>
+                        <Button fx:id="contactsBtn" mnemonicParsing="false" onAction="#contactsBtnSubmit"
+                                style="-fx-border-color: black; -fx-border-radius: 3;" text="Contacts"/>
+                        <Button fx:id="aptmtsBtn" mnemonicParsing="false" onAction="#aptmtsBtnSubmit"
+                                style="-fx-border-color: black; -fx-border-radius: 3;" text="Appointments"/>
+                        <Button fx:id="customersBtn" disable="true" mnemonicParsing="false"
+                                onAction="#customersBtnSubmit"
+                                style="-fx-border-color: black; -fx-border-radius: 3;" text="Customers"/>
+                    </buttons>
+                </ButtonBar>
+                <TableView fx:id="customerTable" layoutX="56.0" layoutY="57.0" prefHeight="342.0" prefWidth="824.0">
+                    <columns>
+                        <TableColumn fx:id="customerIdCol" editable="false" prefWidth="75.0" text="Customer ID"/>
+                        <TableColumn fx:id="customerNameCol" prefWidth="75.0" text="Customer Name"/>
+                        <TableColumn fx:id="customerAddressCol" prefWidth="75.0" text="Address"/>
+                        <TableColumn fx:id="customerPostalCol" prefWidth="75.0" text="Postal Code"/>
+                        <TableColumn fx:id="customerPhoneCol" prefWidth="75.0" text="Phone"/>
+                        <TableColumn fx:id="divisionIdCol" prefWidth="75.0" text="Division ID"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+                <Button fx:id="addUpdateBtn" layoutX="659.0" layoutY="404.0" mnemonicParsing="false"
+                        onAction="#addUpdateBtnAction" text="Add/Update"/>
+                <Button fx:id="deleteBtn" layoutX="790.0" layoutY="404.0" mnemonicParsing="false"
+                        onAction="#deleteBtnAction" text="Delete"/>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

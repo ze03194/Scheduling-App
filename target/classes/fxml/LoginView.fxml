@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1050.0" style="border: lightgray;" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.schedulingapp.controllers.LoginController">
+    <children>
+        <Pane fx:id="loginPane" layoutX="275.0" layoutY="275.0" prefHeight="250.0" prefWidth="500.0"
+              style="-fx-border-color: black; -fx-border-radius: 8;">
+            <children>
+                <Label fx:id="loginLabel" layoutX="234.0" layoutY="31.0" text="Login"/>
+                <TextField fx:id="userNameText" layoutX="175.0" layoutY="60.0" promptText="Username"/>
+                <TextField fx:id="passwordText" layoutX="176.0" layoutY="100.0" promptText="Password"/>
+                <Button fx:id="loginBtn" layoutX="203.0" layoutY="141.0" mnemonicParsing="false" onAction="#loginSubmit"
+                        prefHeight="25.0" prefWidth="91.0" text="Login"/>
+                <Label fx:id="zoneLabel" layoutX="388.0" layoutY="208.0"
+                       style="-fx-border-color: black; -fx-border-radius: 3;" text="Label"/>
+                <Label fx:id="zoneLabelLanguage" layoutX="389.0" layoutY="181.0" text="Zone"/>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
