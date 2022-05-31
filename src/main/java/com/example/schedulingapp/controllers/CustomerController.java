@@ -98,6 +98,7 @@ public class CustomerController implements Initializable {
      */
     public void deleteBtnAction() {
         AddUpdateCustomerController.deleteCustomer(customerTable);
+        refreshTable();
     }
 
     /**

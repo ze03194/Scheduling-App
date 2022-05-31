@@ -7,9 +7,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 /**
@@ -90,6 +92,7 @@ public class LoggedInController implements Initializable {
     public void checkForAppointments() {
         ObservableList<Appointment> allAppointments = AppointmentDao.getAllAppointments();
         ObservableList<Appointment> associatedAppointments = FXCollections.observableArrayList();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
         if (allAppointments != null)
             for (Appointment appointment : allAppointments)
@@ -98,9 +101,13 @@ public class LoggedInController implements Initializable {
 
         for (Appointment appointment : associatedAppointments)
             if (appointment.getStart().isBefore(LocalDateTime.now().plusMinutes(15)) &&
-                    appointment.getStart().isAfter(LocalDateTime.now().minusMinutes(15)))
-                HelperController.displayAlert("15min Alert");
-
+                    appointment.getStart().isAfter(LocalDateTime.now().minusMinutes(15))) {
+                alert.setTitle("Appointment Within 15 Minutes!");
+                alert.setContentText("AppointmentID: " + appointment.getAppointmentID() + "\n" +
+                        "Date: " + appointment.getStart().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + "\n" +
+                        "Time: " + appointment.getStart().format(DateTimeFormatter.ofPattern("HH:mm")));
+                alert.showAndWait();
+            }
     }
 
 }

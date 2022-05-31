@@ -323,6 +323,7 @@ public class AddUpdateAppointmentController implements Initializable {
      * Deletes the user's selected appointment
      */
     public void deleteBtnAction() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         Appointment appointment = apptTable.getSelectionModel().getSelectedItem();
         if (appointment == null) {
             HelperController.displayAlert("Unselected Option");
@@ -330,11 +331,27 @@ public class AddUpdateAppointmentController implements Initializable {
         }
 
         if (weekRadio.isSelected())
-            if (AppointmentDao.deleteAppointment(appointment))
+            if (AppointmentDao.deleteAppointment(appointment)) {
+                alert.setTitle("Deleted Appointment");
+                alert.setContentText("AppointmentID: " + appointment.getAppointmentID() + "\nType: " + appointment.getType());
+                alert.showAndWait();
                 weekRadioAction();
+            }
         if (monthRadio.isSelected())
-            if (AppointmentDao.deleteAppointment(appointment))
+            if (AppointmentDao.deleteAppointment(appointment)) {
+                alert.setTitle("Deleted Appointment");
+                alert.setContentText("AppointmentID: " + appointment.getAppointmentID() + "\nType: " + appointment.getType());
+                alert.showAndWait();
                 monthRadioAction();
+            }
+        if (!(monthRadio.isSelected() && weekRadio.isSelected()))
+            if (AppointmentDao.deleteAppointment(appointment)) {
+                alert.setTitle("Deleted Appointment");
+                alert.setContentText("AppointmentID: " + appointment.getAppointmentID() + "\nType: " + appointment.getType());
+                alert.showAndWait();
+                allAppointments = AppointmentDao.getAllAppointments();
+                refreshTable(allAppointments);
+            }
     }
 
     /**

@@ -92,6 +92,12 @@ public class AddUpdateCustomerController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        allCustomers = CustomerDao.getAllCustomers();
+        allCountries = CountryDao.getAllCountries();
+
+        if (allCountries != null)
+            for (Country country : allCountries)
+                countryComboBox.getItems().add(country.getCountry());
         refreshTable();
         getSelectedModel();
     }
@@ -101,14 +107,7 @@ public class AddUpdateCustomerController implements Initializable {
      */
     public void refreshTable() {
         allDivisions = FirstLevelDao.getAllDivisions();
-        allCountries = CountryDao.getAllCountries();
         allCustomers = CustomerDao.getAllCustomers();
-
-
-        if (allCountries != null)
-            for (Country country : allCountries)
-                countryComboBox.getItems().add(country.getCountry());
-
 
         customerIdCol.setCellValueFactory(cellData -> cellData.getValue().idProperty());
         customerNameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
